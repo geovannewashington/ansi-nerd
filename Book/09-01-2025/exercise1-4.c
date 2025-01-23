@@ -10,10 +10,10 @@ void heading()
 
 int main()
 {
-        float lower = -17.8;
-        float upper = 148.9;
+        float lower = 0;
+        float upper = 100;
 
-        float fahr = 0;
+        float fahr;
         float celcius = lower;
         
         int step = 10;

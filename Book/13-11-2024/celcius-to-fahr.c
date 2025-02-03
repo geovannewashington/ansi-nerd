@@ -2,12 +2,7 @@
 
 /* print Fahrenheit-Celcius table for fahr = 0, 20, 40, ..., 300 */
 
-void header()
-{
-	printf("================================\n");
-	printf("----Fahrenheit-Celcius-Table----\n");
-	printf("================================\n");
-}
+
 
 int main() 
 {	

@@ -1,5 +1,11 @@
 #include <stdio.h>
 
+/* Prints Fahrenheit-Celcius Table */
+
+#define LOWER 0    // lower limit of table
+#define UPPER 300  // upper limit 
+#define STEP 20    // step size
+
 void table_header()
 {
         puts("fahrenheit celsius");
@@ -9,12 +15,10 @@ void table_header()
 
 int main(void)
 {
-        const int start_temp = 300;
-        const int step = 20; 
         int fahr;
 
         table_header();
-        for (fahr = start_temp; fahr >= 0; fahr -= step) {
+        for (fahr = UPPER; fahr >= LOWER; fahr -= STEP) {
                 printf("%3d %6.1f\n", fahr, (5.0 / 9.0) * (fahr - 32));
         }
 

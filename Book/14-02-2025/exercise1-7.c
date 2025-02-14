@@ -5,6 +5,6 @@
 int main(void)
 {
         /* since EOF == -1, the signed integer format specifier should work to output it */
-        printf("%d\n", EOF);
+        printf("\n", EOF);
         return 0;
 }

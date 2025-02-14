@@ -2,7 +2,7 @@
 
 int main(void)
 {
-        char ch;
+        int ch;
         puts("Type something (press Ctrl + D to stop on Linux/macOS) or Ctrl + Z on Windows:");
         
         while ((ch = getchar()) != EOF) {

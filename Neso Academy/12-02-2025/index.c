@@ -32,8 +32,8 @@ int func()
 */
 
 void A() {
-    {   // Code C
-        printf("Value of b: %d\n", b); // ✅ Accessible
-    }
-    int b = 10; // Code B
+        int b = 10; // Code B
+        {   // Code C
+                printf("Value of b: %d\n", b); // ✅ Accessible
+        }
 }

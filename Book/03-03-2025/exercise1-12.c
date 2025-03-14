@@ -8,8 +8,9 @@ int main(void)
 {
     int c, state;
     state = OUT; // by default we are outside a word
-    
+    int i = 0;    
     while ((c = getchar()) != EOF) {
+        i++;
         if (c == ' ' || c == '\n' || c == '\t') {
             if (state == IN) {
                 putchar('\n');
@@ -21,5 +22,6 @@ int main(void)
             putchar(c); 
         }
     }
+    printf("%d",i); // -> 11 
     return 0;
 }

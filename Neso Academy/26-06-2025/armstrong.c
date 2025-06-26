@@ -13,10 +13,6 @@ int is_armstrong(char number[]);
 
 int main(int argc, char *argv[])
 {
-    // caso argc != 2 
-    //    caso argc == 1, pedir o número e popular um array de char.
-    //    caso argc > 2, printar usage, afim de ensinar o usuário a usar o programa.
-    
     // NOTE: case argc == 2, number is argv[1]
     char number[100];
     
@@ -35,7 +31,6 @@ int main(int argc, char *argv[])
             exit(1);
         }
     }
-   
     // is_populated && printf("Number: %s\n", number) || printf("Number: %s\n", argv[1]);
     int result = is_populated && is_armstrong(number) || is_armstrong(argv[1]);
     
@@ -51,10 +46,11 @@ int is_armstrong(char number[])
     int expoent = strlen(number);
     int user_num = (int)atoi(number);
     int new_num = 0;
-
+    
     for (int i = 0; i < expoent; i++)
         new_num += pow((number[i] - '0'), expoent); 
-
+    
+    //  BUG: For some reason when user_num and new_num are different we have a segfault. 
     return (user_num == new_num) ? 1 : 0;
 }
 

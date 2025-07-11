@@ -70,3 +70,12 @@ bool is_number_strong(char number[])
     int original_number = atoi(number);
     return original_number == new_num;
 }
+
+
+
+
+
+
+
+
+

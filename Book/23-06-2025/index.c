@@ -18,20 +18,29 @@ int main(int argc, char *argv[])
             max = len;
             copy(longest, line);
         }
-    if (max > 0) // there was a line
+    
+    // there was a line.
+    if (max > 0) {
+        printf("Lenght: %d\n", max);
         printf("%s\n", longest);
+    }
     return 0;
 }
 
 // getline: read a line into s, return length
 int get_line(char s[], int lim)
 {
-    // TODO: Counter the lenght regardless of buffer size.
+    //  TODO: Counter the lenght regardless of buffer size.
+    //  BUG: Pressing enter (\n) won't exit the for loop, only EOF works. 
+    // it does get of the loop, it just still reading data for some reason.
     int c, i;
-    for (i = 0; i < lim-1 && (c = getchar()) != EOF && c != '\n'; ++i)    
-        s[i] = c;
+    for (i = 0; (c = getchar()) != EOF && c != '\n'; ++i) {
+        if (i < lim - 1)
+            s[i] = c;
+    }
+    
     if (c == '\n') {
-        s[i] = c;
+        s[lim] = c;
         ++i;
     } 
     s[i] = '\0';
@@ -45,7 +54,6 @@ void copy(char to[], char from[])
     while ((to[i] = from[i]) != '\0')
         ++i;
 }
-
 
 
 

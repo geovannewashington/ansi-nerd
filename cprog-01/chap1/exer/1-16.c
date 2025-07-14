@@ -34,37 +34,37 @@ int my_getline(char s[], int lim)
 {
     // [FLAG]: initially 'i' is less than the limit (buffer/1000)
     bool is_out_of_bounds = false;
-    int c, i; 
+    // so j is our variable that can get out of bounds, that is, it can higher than 1000 chars
+    int c, i, j = 0; 
      
     //  this loops runs from i == 0 to i < 999, that is, 999 times.
     // TODO: I need a way of keep counting the 'i' variable regardless of the size of the string 
-    for (i = 0; (c = getchar()) != EOF && c != '\n'; ++i) {
+    for (i = 0; (c = getchar()) != EOF && c != '\n'; ) {
         // if i == 999 it's out of bound
-        if (i > lim - 2)
+        if (i == (lim - 1))
             is_out_of_bounds = true;
         
+        j++;
         if (is_out_of_bounds) {
-            // if 'i' is out of bounds we increment the i variable but we do not to to assign the character the array
-            i++;
+            // if 'i' is out of bounds we increment the i variable but we do not try to assign the character the array
             continue;
         }
-
+        
+        // 'i' can only be increment up to 999, which is the buffer limit.
+        i++;
         s[i] = c;
     }
     // only runs if the last character is a newline char and we are not out of bounds
-    if (c == '\n' && !is_out_of_bounds) {
+    if (c == '\n') {
         s[i] = c;
-        ++i;
+        i++;
     }
     // We're adding a null character at the end of the string regardless if it's a newline character or not
     // that's why the loop runs only lim - 1 times (so that we have a final spot to the null character)
-    if (!is_out_of_bounds) 
-        s[i] = '\0';
-    else {
-        s[lim] = '\0';
-    }
+    // NOTE: at this point 'i' can be up to 1000, which is the buffer.
 
-    return i;
+    s[i] = '\0';
+    return j;
 }
 
 // copy: copy 'from' into 'to'; assume to is big enough

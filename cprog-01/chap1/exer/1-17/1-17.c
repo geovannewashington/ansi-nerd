@@ -1,29 +1,27 @@
 #include <stdio.h>
 #include <stdbool.h> 
 
+// Exercise 1.17. Write a program to pritn all input lines that are longer than 80 characters.
 #define MAXLINE 1000 // maximum input line length
 
 int my_getline(char line[], int maxline);
-void copy(char to[], char from[]);
 
 /* print the longest input line */
 int main()
 {
-    int len; // current line length
-    int max; // maximum length seen so far
+    int len;          // current line length
+    int minimum = 80; // minimum threshold to print 
     char line[MAXLINE]; // current input line
-    char longest[MAXLINE]; // longest line saved here 
-    
-    max = 0;
-    while ((len = my_getline(line, MAXLINE)) > 0) 
-        if (len > max) {
-            max = len;
-            copy(longest, line);
+   // puts(line); 
+    while ((len = my_getline(line, MAXLINE)) > 0)  {
+        if (len > minimum) {
+            // if (len > minimum); then print line
+            printf("%s\n", line);
         }
+    }
 
     // In theory this could print more than 1000
-    printf("length of longest input: %d\n", max);
-    printf("%s\n", longest);
+    // printf("length of longest input: %d\n", max);
     return 0;
 }
 
@@ -49,7 +47,7 @@ int my_getline(char s[], int lim)
             // if 'i' is out of bounds we increment the i variable but we do not try to assign the character the array
             continue;
         }
-        
+       
         // 'i' can only be increment up to 999, which is the buffer limit.
         i++;
         s[i] = c;
@@ -65,12 +63,4 @@ int my_getline(char s[], int lim)
 
     s[i] = '\0';
     return j;
-}
-
-// copy: copy 'from' into 'to'; assume to is big enough
-void copy(char to[], char from[])
-{
-    int i = 0;
-    while ((to[i] = from[i]) != '\0')
-        i++;
 }

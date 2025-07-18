@@ -12,7 +12,7 @@ int main()
     int len;          // current line length
     int minimum = 80; // minimum threshold to print 
     char line[MAXLINE]; // current input line
-   // puts(line); 
+    // puts(line); 
     while ((len = my_getline(line, MAXLINE)) > 0)  {
         if (len > minimum) {
             // if (len > minimum); then print line

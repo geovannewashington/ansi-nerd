@@ -11,7 +11,7 @@
 // decimal_number == 1 * 2^3 + ... + 1 * 2^0 = 9                     
 // Extra challenge: number must be trully a number.
 
-int int_to_decimal(char bin_num[]) 
+int bin_to_decimal(char bin_num[]) 
 {
     int num_size = strlen(bin_num) - 1; // -> 4 in this case.
     int res = 0;
@@ -27,7 +27,7 @@ int int_to_decimal(char bin_num[])
 int main(int argc, char *argv[])
 {
     char bin_num[] = "10110"; // should be 22 in decimal.
-    int decimal_number = int_to_decimal(bin_num); 
+    int decimal_number = bin_to_decimal(bin_num); 
 
     printf("Decimal: %d\n", decimal_number);
     exit(EXIT_SUCCESS);

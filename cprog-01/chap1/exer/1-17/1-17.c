@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdbool.h> 
 
-// Exercise 1.17. Write a program to pritn all input lines that are longer than 80 characters.
+// Exercise 1.17. Write a program to print all input lines that are longer than 80 characters.
 #define MAXLINE 1000 // maximum input line length
 
 int my_getline(char line[], int maxline);
@@ -13,6 +13,8 @@ int main()
     int minimum = 80; // minimum threshold to print 
     char line[MAXLINE]; // current input line
     // puts(line); 
+    // NOTE: Since I don't want to print as I'm getting the input 
+    // I guess I need to somehow store all the lines longer than 80 characters somewhere, somehow.
     while ((len = my_getline(line, MAXLINE)) > 0)  {
         if (len > minimum) {
             // if (len > minimum); then print line
@@ -21,7 +23,7 @@ int main()
     }
 
     // In theory this could print more than 1000
-    // printf("length of longest input: %d\n", max);
+    //printf("length of longest input: %d\n", max);
     return 0;
 }
 
@@ -49,8 +51,8 @@ int my_getline(char s[], int lim)
         }
        
         // 'i' can only be increment up to 999, which is the buffer limit.
-        i++;
         s[i] = c;
+        i++;
     }
     // only runs if the last character is a newline char and we are not out of bounds
     if (c == '\n') {

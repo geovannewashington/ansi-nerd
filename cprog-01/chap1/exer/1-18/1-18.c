@@ -36,12 +36,15 @@ int main(int argc, char *argv[])
         // if line is a single newline character
         // we don't remove any trailings (don't call function)
         // we don't print anything on the screen.
-        if (len == 1) {
-            continue;
-        }
         remove_trailings(fixed_line, current_line);
-        // printf("%s\n", fixed_line);
-        fprintf(fp, "%s\n", fixed_line);
+        
+        if (len == 1 || strlen(fixed_line) == 1) 
+            continue;
+        
+        printf("%s", fixed_line);
+        
+        fprintf(fp, "%s", fixed_line);
+        fclose(fp);
     }
 
     return EXIT_SUCCESS;
@@ -72,14 +75,6 @@ void remove_trailings(char to[], char from[])
     // from_len can only be, at minimum 2
     int i = 0, from_len = strlen(from); 
     int last_valid_pos = 0;
-
-    while (last_valid_pos == -1) {
-        if (from[i] != ' ' && from[i] != '\t') {
-            last_valid_pos = i;
-            break;
-        }
-        i--;
-    }
     
     for (i = from_len - 2; i > 0; i--) {
         if (from[i] != ' ' && from[i] != '\t') {
@@ -89,7 +84,7 @@ void remove_trailings(char to[], char from[])
     }
     // We got prevent somehow from copying wihtout the need for it.
     // if (last_valid_pos == from[from_len - 1]) return;
-
+    
     for (i = 0; i <= last_valid_pos; i++) {
         to[i] = from[i];
     }

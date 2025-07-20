@@ -20,6 +20,7 @@ int main(int argc, char *argv[])
     // Program should terminate itself, when there's no more lines.
     
     FILE *fp;
+    
     char current_line[MAX]; // current line input, gets overwritten every while iteration
     char fixed_line[MAX];   // line without the trailing spaces.
     int len;
@@ -31,8 +32,15 @@ int main(int argc, char *argv[])
         // Note that a single newline character ('\n') is a valid line, we just don't print it. }
         // while there is a line, we keep cutting down trailing spaces.
         // NOTE: we got remove blank spaces (' ') and '\t'
+       
+        // if line is a single newline character
+        // we don't remove any trailings (don't call function)
+        // we don't print anything on the screen.
+        if (len == 1) {
+            continue;
+        }
         remove_trailings(fixed_line, current_line);
-        printf("The line you inserted was %d characters long\n", len);
+        // printf("%s\n", fixed_line);
         fprintf(fp, "%s\n", fixed_line);
     }
 
@@ -55,11 +63,24 @@ int my_getline(char s[], int max)
 
 // from is the original line that might contain the trailing spaces.
 // to is the fixed line, that is, without the trailing spaces.
+// this function will only called when line is at least 2 characters long.
 void remove_trailings(char to[], char from[]) 
 {
-    int i, from_len = strlen(from);
-    int last_valid_pos;
+    // strlen returns the total length until \0
+    // so if array is, e.g.: 'tpose\n\0', strlen will return 6
+    // and therefore the last element is strlen(arr) - 2
+    // from_len can only be, at minimum 2
+    int i = 0, from_len = strlen(from); 
+    int last_valid_pos = 0;
 
+    while (last_valid_pos == -1) {
+        if (from[i] != ' ' && from[i] != '\t') {
+            last_valid_pos = i;
+            break;
+        }
+        i--;
+    }
+    
     for (i = from_len - 2; i > 0; i--) {
         if (from[i] != ' ' && from[i] != '\t') {
             last_valid_pos = i;

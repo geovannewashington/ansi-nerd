@@ -6,7 +6,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <ctype.h>
-#include <stdbool.h>
 
 #define MAX 1000 // How long can line be
 
@@ -30,15 +29,18 @@ int main(int argc, char *argv[])
         // We could reverse while printing one character at a time within the reverse function
         // but let's use a more modular approach to achieve better separation of concerns.
         
-        if (len == 2) {
+        if (len <= 2) {
             int counter = 0; // how many alphas
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < len; i++)
                 if (isalpha(line[i])) {
                     counter++;
                 }
-            // prevents computing any further
+            // skips printing in case there's no characters at all
+            if (counter == 0) 
+                continue; 
+            // we don't need to reverse a single character
             if (counter <= 1) {
-                printf("%s\n", line);
+                printf("%s", line);
                 continue;
             }
         }

@@ -30,17 +30,18 @@ int main(int argc, char *argv[])
         // We could reverse while printing one character at a time within the reverse function
         // but let's use a more modular approach to achieve better separation of concerns.
         
-        bool should_reverse = true; 
-        if (len <= 2) {
-            for (int i = 0; i < 2; i++) {
+        if (len == 2) {
+            int counter = 0; // how many alphas
+            for (int i = 0; i < 2; i++)
                 if (isalpha(line[i])) {
-                    putchar(line[i]);
-                } else {
-                    should_reverse = false;
-                } 
+                    counter++;
+                }
+            // prevents computing any further
+            if (counter <= 1) {
+                printf("%s\n", line);
+                continue;
             }
         }
-        if (!should_reverse) continue;        
         reverse(line, reversed_line);
         printf("%s\n", reversed_line);
     }
@@ -81,6 +82,6 @@ void reverse(char s[], char reversed[])
         j--;
         i++; 
     }
-    reversed[i + 1] = '\0';
+    reversed[i] = '\0';
 }
 

@@ -86,4 +86,3 @@ void reverse(char s[], char reversed[])
     }
     reversed[i] = '\0';
 }
-

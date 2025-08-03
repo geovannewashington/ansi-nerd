@@ -1,2 +1,1 @@
-# c-development
-🇨 Repository for learning C through Neso Academy and 'The C Programming Language' book.
+# Notes and exercises from K&R and Neso Academy.

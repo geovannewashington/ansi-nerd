@@ -2,7 +2,7 @@
 #include <stdlib.h>
 
 // Neso Academy - Class n. 83: 
-// Recursion (Solved Problem 3) 
+// Recursion (Solved Problem 4) 
 
 // Determine, what is the output 
 int func(int n)
@@ -23,6 +23,7 @@ the result will be x summed up after all iterations */
 
 int main(int argc, char *argv[]) 
 {
-    func(5); // 51
+    int x = func(5); // 51
+    printf("%d\n", x);
     return EXIT_SUCCESS;
 }

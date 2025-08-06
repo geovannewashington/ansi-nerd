@@ -6,7 +6,7 @@
 
 // Determine, how many number of times the star will be printed on the screen.
 
-// This runs k(k + 1)/2 times
+// This prints k(k + 1)/2 times
 void foo(int n)
 {
     int i = 0;

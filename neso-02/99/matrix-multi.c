@@ -48,12 +48,12 @@ void get_matrix_size(char matrix_label)
     }
 }
 
-void get_matrix_elements(int cols, int matrix[][cols], char matrix_label) 
+void get_matrix_elements(int rows, int cols, int matrix[][cols], char matrix_label) 
 {
     // Enter the elements of matrix a 
     printf("Enter the elements of matrix %c: \n", matrix_label);
-    for (int i = 0; i < rows_a; i++) {
-        for (int j = 0; j < cols_a; j++) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
             scanf("%d", &matrix[i][j]);
         }
     }
@@ -105,8 +105,8 @@ int main(void)
         return EXIT_FAILURE;
     }
 
-    get_matrix_elements(cols_a, matrix_a, 'a');
-    get_matrix_elements(cols_b, matrix_b, 'b');
+    get_matrix_elements(rows_a, cols_a, matrix_a, 'a');
+    get_matrix_elements(rows_b, cols_b, matrix_b, 'b');
 
     calculate_res_mtx(resultant_matrix, matrix_a, matrix_b);
     print_resultant(resultant_matrix);

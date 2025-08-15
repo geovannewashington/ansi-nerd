@@ -80,11 +80,7 @@ void print_resultant(int resultant_matrix[][cols_b])
     printf("Resultant matrix: \n");
     for (int i = 0; i < rows_a; i++) {
         for (int j = 0; j < cols_b; j++) {
-            if (resultant_matrix[i][j] < 10)  {
-                printf("0%d ", resultant_matrix[i][j]);
-            } else {
-                printf("%d ", resultant_matrix[i][j]);
-            }
+            printf("%2d ", resultant_matrix[i][j]);
         }
         printf("\n");
     }

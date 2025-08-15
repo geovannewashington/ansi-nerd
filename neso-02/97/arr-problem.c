@@ -66,11 +66,10 @@ int my_getline(int current_line, int line[][5])
 {
     int i; // length of string
     int c = 0; // stores a character
-
     // TODO: figure out a better way of doing this, and exactly why this happens
     int temp;
-    if (current_line >= 1 ) {
-        while ((temp = getchar()) != '\n' && c != EOF) { };
+    if (current_line >= 1) {
+        while ((temp = getchar()) != '\n' && temp != EOF) { };
     }
 
     // if character is a number, store it in line[current_line][i]

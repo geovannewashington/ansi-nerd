@@ -66,6 +66,7 @@ void calculate_res_mtx(int resultant_matrix[][cols_b],
     // Size of resultant matrix depends on rows of 1st matrix and columns of 2nd matrix.
     for (int i = 0; i < rows_a; i++) {
         for (int j = 0; j < cols_b; j++) {
+            resultant_matrix[i][j] = 0; // important
             // resultant_matrix[i][j] is the element
             for (int k = 0; k < rows_a; k++) {
                     resultant_matrix[i][j] += matrix_a[i][k] * matrix_b[k][j];

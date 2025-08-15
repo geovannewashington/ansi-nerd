@@ -64,18 +64,28 @@ int main(int argc, char *argv[])
     }
     
     int resultant_matrix[MAX][MAX];
+    
     // Calculate resultant matrix:
+    //  NOTE: size of resultant matrix depends on rows of 1st matrix and columns of 2nd matrix.
+    
     for (int i = 0; i < rows_a; i++) {
-        for (int j = 0; j < rows_b; j++) {
-            printf("%d esta mutliplicando %d\n", matrix_a[i][j], matrix_b[j][i]);
-            result += matrix_a[i][j] * matrix_b[j][i];
+        for (int j = 0; j < columns_b; j++) {
+            // resultant_matrix[i][j] is the element
+            for (int k = 0; k < rows_a; k++) {
+                    resultant_matrix[i][j] += matrix_a[i][k] * matrix_b[k][j];
+            }
         }
     }
 
     // print resultant
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 3; j++) {
-            printf("%d ", resultant_matrix[i][j]);
+    printf("Resultant matrix: \n");
+    for (int i = 0; i < rows_a; i++) {
+        for (int j = 0; j < columns_b; j++) {
+            if (resultant_matrix[i][j] < 10)  {
+                printf("0%d ", resultant_matrix[i][j]);
+            } else {
+                printf("%d ", resultant_matrix[i][j]);
+            }
         }
         printf("\n");
     }

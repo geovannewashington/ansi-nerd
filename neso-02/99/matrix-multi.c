@@ -68,7 +68,7 @@ void calculate_res_mtx(int resultant_matrix[][cols_b],
         for (int j = 0; j < cols_b; j++) {
             resultant_matrix[i][j] = 0; // important
             // resultant_matrix[i][j] is the element
-            for (int k = 0; k < rows_a; k++) {
+            for (int k = 0; k < cols_a; k++) {
                     resultant_matrix[i][j] += matrix_a[i][k] * matrix_b[k][j];
             }
         }

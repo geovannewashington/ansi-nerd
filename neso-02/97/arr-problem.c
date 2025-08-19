@@ -24,78 +24,40 @@ Column total: 34 37 32 21
 */
 
 // #define MAX 1000
-
-// returns length of input line
-int my_getline(int current_line, int line[][5]); 
-
-int main(int argc, char *argv[]) 
+void clear_input_buffer() 
 {
-    //  TODO: validate if the number of inserted columns is exactly 5, otherwise we throw an error
-    int arr[5][5] = {0}; // 5 by 5 multi-dimensional array with all elements initalized to 0.
-    int len;
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
 
-    // int line[5]; // can store up to 5 integers
+void print_arr(int cols, int matrix[][cols]) 
+{
+    for (int i = 0; i < 5; i++) {
+        for (int j = 0; j < cols; j++) {
+            printf("%d ", matrix[i][j]);
+        }
+        printf("\n");
+    } 
+}
+
+int main(void) 
+{
+    int arr[5][5] = {0}; // 5 by 5 multi-dimensional array with all elements initalized to 0.
+    int rc;              // rc stands for return code, it's a convention 
 
     for (int i = 0; i < 5; i++) {
-        printf("Enter row %i: ", i + 1);
-        
-        len = my_getline(i, arr);
-        printf("\n"); 
-        
-        // there was no more input
-        if (len == 0) {
-            break;
-        }
-
-        /* for (int j = 0; j < 5; j++) {
-            // take user input 
-            while (my_getline(i, arr)) != 0) { // while there is a line
+        printf("Enter row %d: ", i + 1);
+        for (int j = 0; j < 5; j++) {
+            while ((rc = scanf("%d", &arr[i][j])) == 0) { // neither success or EOF
+                clear_input_buffer();
+                printf("Enter row %d: ", i + 1);
             }
-        } */
-
+        }
     }
+
+    print_arr(5, arr);
     return EXIT_SUCCESS;
 }
-
-// Note that current_line refers to the multi-dimensional array line
-//  BUG:: on the second call, getchar doesn't seem to work. 
-//  the for loop body is simply executed withot waiting for any input.
-//  it seems like c is storing 10 (which is ascii decimal for '\n')
-
-int my_getline(int current_line, int line[][5]) 
-{
-    int i; // length of string
-    int c = 0; // stores a character
-    // TODO: figure out a better way of doing this, and exactly why this happens
-    int temp;
-    if (current_line >= 1) {
-        while ((temp = getchar()) != '\n' && temp != EOF) { };
-    }
-
-    // if character is a number, store it in line[current_line][i]
-    for (i = 0; i < 5 && (c = getchar()) != EOF && c != '\n'; i++) {
-        // printf("entrei no for loop\n");
-        if (isdigit(c)) {
-            line[current_line][i] = c - '0';
-        }
-    }
-    
-    return i;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

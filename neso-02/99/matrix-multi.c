@@ -98,7 +98,7 @@ int main(void)
 
     // MUST: cols_a == rows_b, otherwise we stop the program's execution.
     if (cols_a != rows_b) {
-        fprintf(stderr, "Column quantity of matrix 'a' must match rows quantity of matrix 'b'\n");
+        fprintf(stderr, "Column count of matrix 'a' must match rows quantity of matrix 'b'\n");
         return EXIT_FAILURE;
     }
 

@@ -24,6 +24,31 @@ int main(void)
     
     // so if we want to access the element itself:
     // **arr => *(*arr) => *(*arr[0]) => *(&arr[0][0]) => a[0][0] = 10
-    printf("%d\n", **arr);
+    printf("\n");
+
+    int arr_tri[2][2][2] = {
+        { 
+            {10, 20},
+            {30, 40} 
+        },
+        { 
+            {50, 60},
+            {70, 80}
+        }
+    }; 
+
+    printf("%p\n", arr_tri + 1); // same memory address as &arr_tri[1][0][0]
+    printf("%p\n", &arr_tri[1][0][0]);
+
     return EXIT_SUCCESS;
 }
+
+
+
+
+
+
+
+
+
+

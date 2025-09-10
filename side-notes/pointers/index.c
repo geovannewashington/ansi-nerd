@@ -155,6 +155,50 @@ int *const p3 = &x;       // const pointer to non-const int
 const int *const p4 = &x; // const pointer to const int
 */
 
+///////////////////////////////////////////////////////////////////////////////////////////////////
+// Pointers and string literals 
+
+// This declares an array with the literal representation for "hello", and then a pointer to its 
+// first element is assigned to foo.
+// const char *foo = "hello";
+
+// If we imagine that "hello" is stored at the memory location that start at the address 1702:
+// const char *foo = "hello";
+
+// char str[] = "hello"; // -> char str[] = {'h', 'e', 'l', 'l', 'o', '\0'};
+// foo = str; // -> foo = &str[0] 
+
+// Note that foo is a pointer and contains the vluae 1702, and not 'h', nor 'hello', although 1702 
+// indeed is the addres of both of these.
+
+/* And because pointers and arrays behave essentially in the same way in expressions, foo can be used 
+to access the characters in the same way arrays of null-terminated character sequences are. For example: */
+
+// *(foo + 4);
+// foo[4];
+
+/* #include <stdio.h>
+#include <stdlib.h>
+
+int main(void) 
+{
+    int factor = 2;
+    int arr[] = {10, 20, 30};     
+    
+    int *i_ptr = arr;
+    
+    // Both print the same value 
+    // Indeed array square bracket notation is just syntatic sugar for pointer arithmetic
+    // arr[x] is equivalent to *(arr_ptr + x) which is *(arr_ptr + x * sizeof(data_type)) 
+    printf("%d\n", arr[factor]);       // 30
+    printf("%d\n", *(i_ptr + factor)); // 30
+    return EXIT_SUCCESS;
+} */
+
+
+
+
+
 
 
 

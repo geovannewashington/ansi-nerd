@@ -5,11 +5,16 @@
 #include <stdlib.h>
 #include <string.h>
 
-// The library string.h provides essential functions for working with strings in C, things that you'd 
-// take for granted in other higher level languages: concatenation, length and so on...
+// The <string.h> library provides essential functions for working with strings in C.
+// Things like concatenation, length, comparison, and copying — operations that higher-
+// level languages often provide as built-ins.
 
-// strcpy -> string copy
-// function signature: char *strcpy(char *dest, const char *src);
+// strcpy() → string copy
+// Function signature:
+//     char *strcpy(char *dest, const char *src);
+//
+// Copies the null-terminated string from src into dest,
+// including the terminating '\0'. The return value is dest.
 
 /*
 int main(void) 
@@ -17,14 +22,15 @@ int main(void)
     char str1[10] = "Hello";
     char str2[10];
     
-    // Here we're copying from str1 to str2
-    printf("%p\n", strcpy(str2, str1)); // returns a pointer to the copied string. 
-    printf("%p\n", str2);               // same memory address 
+    // Copying str1 into str2 
+    printf("%p\n", strcpy(str2, str1)); // returns pointer to dest (str2) 
+    printf("%p\n", str2);               // same memory address as above
     return EXIT_SUCCESS;
 }
 */
 
-// We can also chain togueter a series of strcpy calls...
+// Because strcpy returns dest, you can *chain* calls togueter. 
+
 /*
 int main(void) 
 {
@@ -33,29 +39,34 @@ int main(void)
     char str3[10];        
     
     strcpy(str3, strcpy(str2, str1));
-    printf("%s %s\n", str2, str3); // -> Hello Hello
+    printf("%s %s\n", str2, str3); // -> Output: Hello Hello
     return EXIT_SUCCESS;
 }
 */
 
-// strcpy doesn't care and don't check wheter the destination character array is big enough...
-// so if the destination is shorter than the source this causes undefined behavior...
+// ⚠️ Important caveat:
+// strcpy() does NOT check whether the destination array is large enough.
+// If dest is too small, this leads to buffer overflows → undefined behavior.
 
-// To avoid this we have a safer alternative, strncpy... this n simply means number I guess
+// To reduce this risk, use strncpy().
 // Function signature:
-// char *strncpy(char *dest, const char *src, size_t n);
-// note that now we have an extra argument which is the limit of characters to copy
+//     char *strncpy(char *dest, const char *src, size_t n);
+//
+// It copies at most n characters from src to dest. 
+// If src has fewer than n characters, the remainder of dest is padded with '\0'.
+// BUT if src is longer than or equal to n, the result will NOT be null-terminated,
+// so you must terminate it manually.
 
 int main(void)
 {
     char str1[6] = "Hello"; 
-    char str2[4]; // Note that str2 has not enough space to hold "Hello" (5)
-    // Important! if the source string is greater or equal to sizeof(str2), str2 will NOT place the null 
-    // character! so in this case we have to do it manually.
+    char str2[4]; // Not enough space to hold "Hello" (+ '\0') 
+    
+    // Copy up to sizeof(str2) characters
     strncpy(str2, str1, sizeof(str2));
+    // Ensure null termination 
     str2[sizeof(str2) - 1] = '\0'; 
+    
     printf("%s\n", str2); // Hel
     return EXIT_SUCCESS;
 }
-
-

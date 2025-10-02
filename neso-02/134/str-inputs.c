@@ -71,7 +71,7 @@ int main(void)
     if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
         // Remove trailing newline if present
         size_t len = strlen(buffer);
-        if (len > 0 && buffer[len - 1] == '\n') {// If there is a line and the last element is the newline  
+        if (len > 0 && buffer[len - 1] == '\n') { // If there is a line and the last element is the newline  
             buffer[len - 1] = '\0';
         } else  {
             clear_stdin(); // clear remaining characters

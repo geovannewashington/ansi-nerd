@@ -22,6 +22,7 @@ struct abc {
     char b; // 1 byte
     int c;  // 4 bytes
 } var;
+#pragma pack() // reset
 
 struct abc_2 {
     char b; // 1 byte
@@ -32,6 +33,6 @@ struct abc_2 {
 int main() 
 {
     printf("%ld\n", sizeof(var));  // 6
-    printf("%ld\n", sizeof(var1)); // 6
+    printf("%ld\n", sizeof(var1)); // 12
     return EXIT_SUCCESS;
 }

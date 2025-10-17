@@ -30,6 +30,10 @@ b's == 0x123 (example) */
 // 3. Accesing members of union through pointers by using the arrow (->) operator. 
 // (just like structs)
 
+// 4. A little bit of its applications:
+// Memory Optimization: Unions are primarily used to save memory, especially in embedded systems.
+// By allowing different data types to share the same memory space, they reduce the overall memory footprint
+
 typedef union  
 {
     int a; 

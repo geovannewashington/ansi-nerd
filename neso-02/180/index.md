@@ -36,3 +36,10 @@ for (i = 1; i <= n; i++) {
 So the total running time of this program would be the sum of the runnnig time of each statement.
 Total time: `n^2 + n + 3` = O(n^2), why is it n^2? because that's the dominant term that actually
 matters as the input size grows.
+
+To continue:
+
+- Study: logarithm in order to calculate the total amount of iterations a loop will have in programming
+- See 'Watch Later' youtube playlist
+- How modulo is used in rotation computer science problems and why
+- Then rewatch lecture n. 181

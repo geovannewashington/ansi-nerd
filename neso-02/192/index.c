@@ -33,5 +33,6 @@ int main(void)
         printf("%d ", *(arr + i));
     }
     putchar('\n');
+    free(arr);
     return EXIT_SUCCESS;
 }

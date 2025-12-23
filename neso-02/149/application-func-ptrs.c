@@ -25,7 +25,8 @@ void prompt_operation(int *user_choice)
 
 }
 
-void prompt_operands(float *a, float *b)
+void 
+prompt_operands(float *a, float *b)
 {
     puts("------------------");
     puts("Enter two numbers (without spaces)");
@@ -33,7 +34,8 @@ void prompt_operands(float *a, float *b)
     scanf("%f %f", a, b);
 }
 
-int main(int argc, char *argv[])
+int 
+main(int argc, char **argv)
 {
     int user_choice, choice_is_valid = 0; 
     float a, b, result;

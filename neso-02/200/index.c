@@ -17,7 +17,7 @@ int main()
 
     node.ptr = &node2;
 
-    // this way we can access node2 members using node.
+    // This way we can access node2 members using node.
     printf("%d %c\n", node.ptr->a, node.ptr->b);
     return EXIT_SUCCESS;
 }
